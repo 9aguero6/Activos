@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="mydb"/>
+  <table-filter match-name="comprobante"/>
+  <table-filter match-name="activos"/>
+  <table-filter match-name="categorias"/>
+  <table-filter match-name="roles"/>
+  <table-filter match-name="estados"/>
+  <table-filter match-name="usuarios"/>
+  <table-filter match-name="dependencias"/>
+  <table-filter match-name="solicitud"/>
+  <table-filter match-name="tipos"/>
+  <table-filter match-name="barras"/>
+  <table-filter match-name="intermediacomprobante"/>
+  <table-filter match-name="bienes"/>
+</hibernate-reverse-engineering>

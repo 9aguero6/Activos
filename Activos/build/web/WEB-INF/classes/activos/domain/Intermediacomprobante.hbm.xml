@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/03/2019 06:21:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="activos.domain.Intermediacomprobante" table="intermediacomprobante" catalog="mydb" optimistic-lock="version">
+        <composite-id name="id" class="activos.domain.IntermediacomprobanteId">
+            <key-property name="comprobanteIdComprobante" type="int">
+                <column name="Comprobante_idComprobante" />
+            </key-property>
+            <key-property name="bienesIdBienes" type="int">
+                <column name="Bienes_idBienes" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bienes" class="activos.domain.Bienes" update="false" insert="false" fetch="select">
+            <column name="Bienes_idBienes" not-null="true" />
+        </many-to-one>
+        <many-to-one name="comprobante" class="activos.domain.Comprobante" update="false" insert="false" fetch="select">
+            <column name="Comprobante_idComprobante" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

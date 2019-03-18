@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/03/2019 06:21:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="activos.domain.Usuarios" table="usuarios" catalog="mydb" optimistic-lock="version">
+        <id name="idUsuarios" type="java.lang.Integer">
+            <column name="idUsuarios" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="roles" class="activos.domain.Roles" fetch="select">
+            <column name="Roles_idRoles" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" length="45" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

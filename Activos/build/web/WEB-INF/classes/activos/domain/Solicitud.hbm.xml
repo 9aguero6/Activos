@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/03/2019 06:21:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="activos.domain.Solicitud" table="solicitud" catalog="mydb" optimistic-lock="version">
+        <id name="idSolicitud" type="java.lang.Integer">
+            <column name="idSolicitud" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="comprobante" class="activos.domain.Comprobante" fetch="select">
+            <column name="Comprobante_idComprobante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dependencias" class="activos.domain.Dependencias" fetch="select">
+            <column name="Dependencias_idDependencias" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estados" class="activos.domain.Estados" fetch="select">
+            <column name="Estados_idEstados" not-null="true" />
+        </many-to-one>
+        <property name="anotaciones" type="string">
+            <column name="anotaciones" length="150" />
+        </property>
+    </class>
+</hibernate-mapping>

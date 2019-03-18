@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/03/2019 06:21:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="activos.domain.Bienes" table="bienes" catalog="mydb" optimistic-lock="version">
+        <id name="idBienes" type="java.lang.Integer">
+            <column name="idBienes" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" length="45" not-null="true" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" length="45" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <property name="cantidad" type="int">
+            <column name="cantidad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
