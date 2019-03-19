@@ -4,22 +4,18 @@
  * and open the template in the editor.
  */
 package activos.dao;
-
-import activos.domain.Estados;
+import activos.domain.Solicitud;
 import activos.utils.HibernateUtil;
-import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
-
 /**
  *
  * @author USUARIO
  */
-public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Integer> {
+public class SolicitudDAO extends HibernateUtil implements IBaseDao <Solicitud, Integer> {
 
     @Override
-    public void save(Estados o) {
+    public void save(Solicitud o) {
         try{
             iniciaOperacion();
             getSesion().save(o);
@@ -33,10 +29,10 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados merge(Estados o) {
-        try{
+    public Solicitud merge(Solicitud o) {
+       try{
             iniciaOperacion();
-            o=(Estados) getSesion().merge(o);
+            o=(Solicitud) getSesion().merge(o);
             getTrans().commit();
         }catch(HibernateException he){
             manejaException(he);
@@ -48,8 +44,8 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public void delete(Estados o) {
-        try{
+    public void delete(Solicitud o) {
+         try{
             iniciaOperacion();
             getSesion().delete(o);
             getTrans().commit();
@@ -62,30 +58,28 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados findById(Integer o) {
-        Estados estados=null;
+    public Solicitud findById(Integer o) {
+       Solicitud solicitud=null;
         
         try{
             iniciaOperacion();
-            estados=(Estados) getSesion().get(Estados.class, o);
+            solicitud=(Solicitud) getSesion().get(Solicitud.class, o);
         }finally{
             
         }
-        return estados;
+        return solicitud;
     }
 
     @Override
-    public List<Estados> findAll() {
-        List<Estados> list;
+    public List<Solicitud> findAll() {
+      List<Solicitud> list;
         try{
             iniciaOperacion();
-            list=getSesion().createQuery("from Estados").list();
+            list=getSesion().createQuery("from Solicitud").list();
         }finally{
             getSesion().close();
         }
         return list;
     }
-
- 
     
 }

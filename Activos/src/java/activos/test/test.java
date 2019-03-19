@@ -7,6 +7,7 @@ package activos.test;
 
 import activos.dao.EstadosDAO;
 import activos.domain.Estados;
+import java.math.BigInteger;
 
 /**
  *
@@ -21,8 +22,9 @@ public class test {
         // TODO code application logic here
         EstadosDAO estados=new EstadosDAO();
         Estados es=new Estados("ACTIVO");
-        estados.save(es);
-        System.out.println(estados.findAll().get(0).getNombre());
+        es.setIdEstados(3);
+        estados.delete(es);
+        //System.out.println(estados.findAll().get(0).getIdEstados());
     }
     
 }

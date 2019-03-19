@@ -4,22 +4,18 @@
  * and open the template in the editor.
  */
 package activos.dao;
-
-import activos.domain.Estados;
+import activos.domain.Bienes;
 import activos.utils.HibernateUtil;
-import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
-
 /**
  *
  * @author USUARIO
  */
-public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Integer> {
+public class BienesDAO extends HibernateUtil implements IBaseDao <Bienes, Integer> {
 
     @Override
-    public void save(Estados o) {
+    public void save(Bienes o) {
         try{
             iniciaOperacion();
             getSesion().save(o);
@@ -33,10 +29,10 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados merge(Estados o) {
+    public Bienes merge(Bienes o) {
         try{
             iniciaOperacion();
-            o=(Estados) getSesion().merge(o);
+            o=(Bienes) getSesion().merge(o);
             getTrans().commit();
         }catch(HibernateException he){
             manejaException(he);
@@ -48,7 +44,7 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public void delete(Estados o) {
+    public void delete(Bienes o) {
         try{
             iniciaOperacion();
             getSesion().delete(o);
@@ -62,30 +58,28 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados findById(Integer o) {
-        Estados estados=null;
+    public Bienes findById(Integer o) {
+        Bienes bienes=null;
         
         try{
             iniciaOperacion();
-            estados=(Estados) getSesion().get(Estados.class, o);
+            bienes=(Bienes) getSesion().get(Bienes.class, o);
         }finally{
             
         }
-        return estados;
+        return bienes;
     }
 
     @Override
-    public List<Estados> findAll() {
-        List<Estados> list;
+    public List<Bienes> findAll() {
+       List<Bienes> list;
         try{
             iniciaOperacion();
-            list=getSesion().createQuery("from Estados").list();
+            list=getSesion().createQuery("from Bienes").list();
         }finally{
             getSesion().close();
         }
         return list;
     }
-
- 
     
 }

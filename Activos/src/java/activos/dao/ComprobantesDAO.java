@@ -5,22 +5,20 @@
  */
 package activos.dao;
 
-import activos.domain.Estados;
+import activos.domain.Comprobante;
 import activos.utils.HibernateUtil;
-import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 
 /**
  *
  * @author USUARIO
  */
-public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Integer> {
+public class ComprobantesDAO extends HibernateUtil implements IBaseDao <Comprobante, Integer> {
 
     @Override
-    public void save(Estados o) {
-        try{
+    public void save(Comprobante o) {
+       try{
             iniciaOperacion();
             getSesion().save(o);
             getTrans().commit();
@@ -33,10 +31,10 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados merge(Estados o) {
-        try{
+    public Comprobante merge(Comprobante o) {
+      try{
             iniciaOperacion();
-            o=(Estados) getSesion().merge(o);
+            o=(Comprobante) getSesion().merge(o);
             getTrans().commit();
         }catch(HibernateException he){
             manejaException(he);
@@ -48,7 +46,7 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public void delete(Estados o) {
+    public void delete(Comprobante o) {
         try{
             iniciaOperacion();
             getSesion().delete(o);
@@ -62,30 +60,28 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Inte
     }
 
     @Override
-    public Estados findById(Integer o) {
-        Estados estados=null;
+    public Comprobante findById(Integer o) {
+        Comprobante comprobante=null;
         
         try{
             iniciaOperacion();
-            estados=(Estados) getSesion().get(Estados.class, o);
+            comprobante=(Comprobante) getSesion().get(Comprobante.class, o);
         }finally{
             
         }
-        return estados;
+        return comprobante;
     }
 
     @Override
-    public List<Estados> findAll() {
-        List<Estados> list;
+    public List<Comprobante> findAll() {
+        List<Comprobante> list;
         try{
             iniciaOperacion();
-            list=getSesion().createQuery("from Estados").list();
+            list=getSesion().createQuery("from Comprobante").list();
         }finally{
             getSesion().close();
         }
         return list;
     }
-
- 
     
 }
