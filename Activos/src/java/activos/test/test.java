@@ -6,8 +6,10 @@
 package activos.test;
 
 import activos.dao.EstadosDAO;
+import activos.dao.RolesDAO;
 import activos.domain.Estados;
-import java.math.BigInteger;
+import activos.domain.Roles;
+
 
 /**
  *
@@ -20,11 +22,13 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        EstadosDAO estados=new EstadosDAO();
-        Estados es=new Estados("ACTIVO");
-        es.setIdEstados(3);
-        estados.delete(es);
-        //System.out.println(estados.findAll().get(0).getIdEstados());
+
+        RolesDAO roles=new RolesDAO();
+        Roles es=new Roles("Secretario");
+        es.setIdRoles(1);
+        roles.save(es);
+        System.out.println(roles.findAll().get(0).getNombre());
+
     }
     
 }
