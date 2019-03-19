@@ -10,12 +10,13 @@ import activos.utils.HibernateUtil;
 import java.math.BigInteger;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 /**
  *
  * @author USUARIO
  */
-public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, java.math.BigInteger> {
+public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, Integer> {
 
     @Override
     public void save(Estados o) {
@@ -33,17 +34,44 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, java
 
     @Override
     public Estados merge(Estados o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            iniciaOperacion();
+            o=(Estados) getSesion().merge(o);
+            getTrans().commit();
+        }catch(HibernateException he){
+            manejaException(he);
+            throw he;
+        }finally{
+            getSesion().close();
+        }
+        return o;
     }
 
     @Override
     public void delete(Estados o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            iniciaOperacion();
+            getSesion().delete(o);
+            getTrans().commit();
+        }catch(HibernateException he){
+            manejaException(he);
+            throw he;
+        }finally{
+            getSesion().close();
+        }
     }
 
     @Override
-    public Estados findById(BigInteger o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Estados findById(Integer o) {
+        Estados estados=null;
+        
+        try{
+            iniciaOperacion();
+            estados=(Estados) getSesion().get(Estados.class, o);
+        }finally{
+            
+        }
+        return estados;
     }
 
     @Override
@@ -57,5 +85,7 @@ public class EstadosDAO extends HibernateUtil implements IBaseDao <Estados, java
         }
         return list;
     }
+
+ 
     
 }

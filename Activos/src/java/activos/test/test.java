@@ -10,6 +10,7 @@ import activos.dao.RolesDAO;
 import activos.domain.Estados;
 import activos.domain.Roles;
 
+
 /**
  *
  * @author USUARIO
@@ -21,11 +22,13 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         RolesDAO roles=new RolesDAO();
         Roles es=new Roles("Secretario");
         es.setIdRoles(1);
         roles.save(es);
         System.out.println(roles.findAll().get(0).getNombre());
+
     }
     
 }
