@@ -24,10 +24,9 @@ public class test {
         // TODO code application logic here
 
         RolesDAO roles=new RolesDAO();
-        Roles es=new Roles("Secretario");
-        es.setIdRoles(1);
+        Roles es=new Roles("Doctor");
         roles.save(es);
-        System.out.println(roles.findAll().get(0).getNombre());
+        System.out.println(roles.findAll().get(1).getNombre());
 
     }
     
